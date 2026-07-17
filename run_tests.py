@@ -1,4 +1,9 @@
 import sys
+# Set console encoding to UTF-8 on Windows to avoid UnicodeEncodeError for emojis
+if sys.platform.startswith('win'):
+    sys.stdout.reconfigure(encoding='utf-8')
+    sys.stderr.reconfigure(encoding='utf-8')
+
 from app.data.mock_data import CASOS_TESTE
 from app.services.chatbot_service import processar_mensagem, obter_analytics
 from app.nlp.classifier import load_classifier

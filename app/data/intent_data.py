@@ -1,7 +1,4 @@
-INTENCOES_TEXTOS = [
-    # =========================================================
-    # SAUDACAO (40)
-    # =========================================================
+SAUDACAO_TEXTOS = [
     "oi", "ola", "bom dia", "boa tarde", "boa noite",
     "oi bom dia", "oi boa tarde", "oi boa noite", "ola bom dia", "ola boa tarde",
     "oi tudo bem", "ola como vai", "hey", "opa", "e ai",
@@ -9,11 +6,10 @@ INTENCOES_TEXTOS = [
     "ola boa noite", "bom dia tudo bem", "boa tarde tudo bem", "boa noite tudo bem",
     "oi como vai", "oi tudo certo", "ola tudo certo", "oi beleza", "ola beleza",
     "ei", "fala", "salve salve", "opa tudo bem", "e ai tudo certo",
-    "bom dia", "boa tarde", "boa noite", "ola", "oi", "hey tudo bem",
+    "bom dia", "boa tarde", "boa noite", "ola", "oi", "hey tudo bem"
+]
 
-    # =========================================================
-    # RASTREAMENTO (40)
-    # =========================================================
+RASTREAMENTO_TEXTOS = [
     "onde esta meu pedido", "quero rastrear meu pedido", "cade minha encomenda",
     "meu pedido ja foi enviado", "quando meu pedido vai chegar",
     "status do pedido", "rastrear pedido", "rastreamento",
@@ -28,11 +24,10 @@ INTENCOES_TEXTOS = [
     "meu pedido saiu para entrega", "pedido em separacao", "pedido em preparacao",
     "pedido foi postado", "pedido foi despachado", "pedido foi entregue",
     "confirmar entrega do pedido", "o pedido esta atrasado", "minha entrega atrasou",
-    "quero saber a data de entrega", "qual a previsao de entrega",
+    "quero saber a data de entrega", "qual a previsao de entrega"
+]
 
-    # =========================================================
-    # DEVOLUCAO (40)
-    # =========================================================
+DEVOLUCAO_TEXTOS = [
     "quero devolver", "como devolver produto", "devolucao",
     "quero trocar o produto", "nao quero mais o produto",
     "como faco para devolver", "politica de devolucao", "prazo para devolver",
@@ -47,10 +42,17 @@ INTENCOES_TEXTOS = [
     "como solicitar troca", "como solicitar devolucao", "procedimento de devolucao",
     "onde solicito devolucao", "como devolver a encomenda", "quero devolver e receber estorno",
     "desistir da compra", "arrependimento de compra",
+    # Novas frases para melhor reconhecimento de devolução ou reembolso
+    "devolucao ou reembolso",
+    "devolução ou reembolso",
+    "como funciona a devolução ou reembolso",
+    "quero devolução ou reembolso",
+    "devolução e reembolso",
+    "devolução ou estorno",
+    "reembolso ou devolução"
+]
 
-    # =========================================================
-    # RECLAMACAO (40)
-    # =========================================================
+RECLAMACAO_TEXTOS = [
     "produto veio errado", "recebi produto errado", "veio com defeito",
     "produto danificado", "nao era isso que pedi", "muito insatisfeito",
     "pessimo atendimento", "vou processar", "reclamar",
@@ -64,11 +66,10 @@ INTENCOES_TEXTOS = [
     "entregaram errado", "entregaram outro produto", "mandaram produto errado",
     "produto nao funciona", "nao liga", "nao veio funcionando",
     "atendimento ruim", "experiencia horrivel", "muito decepcionado",
-    "isso e inaceitavel", "quero registrar reclamacao",
+    "isso e inaceitavel", "quero registrar reclamacao"
+]
 
-    # =========================================================
-    # PAGAMENTO (40)
-    # =========================================================
+PAGAMENTO_TEXTOS = [
     "formas de pagamento", "como pagar", "aceita cartao",
     "posso pagar com pix", "tem boleto", "parcela em quantas vezes",
     "pagar com credito", "pagar com debito", "opcoes de pagamento",
@@ -83,10 +84,15 @@ INTENCOES_TEXTOS = [
     "cartao recusado", "pagamento recusado", "erro no pagamento",
     "nao consegui pagar", "como confirmar pagamento", "pagamento nao aprovado",
     "como emitir segunda via", "segunda via do boleto",
+    # Novas frases para melhor reconhecimento de formas de pagamento
+    "quais são as formas de pagamento",
+    "quais formas de pagamento você aceita",
+    "quais as formas de pagamento",
+    "formas de pagamentos",
+    "opções de pagamentos"
+]
 
-    # =========================================================
-    # FAQ (40)
-    # =========================================================
+FAQ_TEXTOS = [
     "como funciona", "duvida", "pergunta",
     "quero saber", "informacao", "me explica",
     "como faz", "qual o procedimento", "como proceder",
@@ -100,11 +106,10 @@ INTENCOES_TEXTOS = [
     "tem loja fisica", "como atualizar cadastro", "como trocar senha",
     "esqueci minha senha", "como criar conta", "como acessar minha conta",
     "como alterar endereco", "como aplicar cupom", "onde coloco o cupom",
-    "quais sao as promocoes", "como funciona o frete",
+    "quais sao as promocoes", "como funciona o frete"
+]
 
-    # =========================================================
-    # DESPEDIDA (40)
-    # =========================================================
+DESPEDIDA_TEXTOS = [
     "tchau", "ate mais", "obrigado", "valeu", "brigado",
     "muito obrigado", "agradeco", "era so isso", "so isso",
     "tchau obrigado", "ate logo", "falou", "flw",
@@ -117,12 +122,22 @@ INTENCOES_TEXTOS = [
     "tenha um bom dia", "obrigado e tchau", "tchau tchau", "ate breve"
 ]
 
+INTENCOES_TEXTOS = (
+    SAUDACAO_TEXTOS +
+    RASTREAMENTO_TEXTOS +
+    DEVOLUCAO_TEXTOS +
+    RECLAMACAO_TEXTOS +
+    PAGAMENTO_TEXTOS +
+    FAQ_TEXTOS +
+    DESPEDIDA_TEXTOS
+)
+
 INTENCOES_LABELS = (
-    ['saudacao'] * 40 +
-    ['rastreamento'] * 40 +
-    ['devolucao'] * 40 +
-    ['reclamacao'] * 40 +
-    ['pagamento'] * 40 +
-    ['faq'] * 40 +
-    ['despedida'] * 40
+    ['saudacao'] * len(SAUDACAO_TEXTOS) +
+    ['rastreamento'] * len(RASTREAMENTO_TEXTOS) +
+    ['devolucao'] * len(DEVOLUCAO_TEXTOS) +
+    ['reclamacao'] * len(RECLAMACAO_TEXTOS) +
+    ['pagamento'] * len(PAGAMENTO_TEXTOS) +
+    ['faq'] * len(FAQ_TEXTOS) +
+    ['despedida'] * len(DESPEDIDA_TEXTOS)
 )
