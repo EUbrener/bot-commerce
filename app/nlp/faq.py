@@ -8,25 +8,25 @@ from app import config
 from app.nlp.preprocessor import preprocessar_texto_configuravel
 from app.data.faq_data import FAQ_PERGUNTAS, FAQ_RESPOSTAS
 
-# Global variables for models
+# Variáveis globais para armazenar os modelos de FAQ
 _vetorizador_faq = None
 _modelo_bigrama_faq = None
 
 def load_faq_models():
-    """Loads the FAQ vectorizer and bigram models if not already loaded."""
+    """Carrega o vetorizador e os modelos de bigramas do FAQ, caso ainda não estejam carregados."""
     global _vetorizador_faq, _modelo_bigrama_faq
     if _vetorizador_faq is None:
         if config.VECTORIZER_FAQ_PATH.exists():
             _vetorizador_faq = joblib.load(config.VECTORIZER_FAQ_PATH)
         else:
             raise FileNotFoundError(
-                "FAQ Vectorizer file not found. Please run 'python train.py'."
+                "Arquivo do vetorizador do FAQ não encontrado. Por favor, execute 'python train.py'."
             )
     if _modelo_bigrama_faq is None:
         if config.BIGRAM_FAQ_PATH.exists():
             _modelo_bigrama_faq = joblib.load(config.BIGRAM_FAQ_PATH)
         else:
-            # Fallback to building bigrams dynamically or empty dict if training hasn't occurred
+            # Fallback para bigramas dinâmicos ou dicionário vazio se o treinamento não ocorreu
             _modelo_bigrama_faq = {}
     return _vetorizador_faq, _modelo_bigrama_faq
 

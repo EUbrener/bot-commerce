@@ -17,7 +17,7 @@ from app.handlers.bot_handlers import (
 
 logger = logging.getLogger(__name__)
 
-# Global in-memory analytics store
+# Armazena em memória as estatísticas de analytics
 ANALYTICS = {
     'total_mensagens': 0,
     'intencoes': defaultdict(int),

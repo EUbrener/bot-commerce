@@ -5,7 +5,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import RSLPStemmer
 
-# Ensure NLTK resources are downloaded
+# Garantir que os recursos do NLTK estejam baixados
 try:
     nltk.data.find('tokenizers/punkt')
 except LookupError:

@@ -1,5 +1,5 @@
 import sys
-# Set console encoding to UTF-8 on Windows to avoid UnicodeEncodeError for emojis
+# Define encoding do console para UTF-8 no Windows para evitar UnicodeEncodeError para emojis
 if sys.platform.startswith('win'):
     sys.stdout.reconfigure(encoding='utf-8')
     sys.stderr.reconfigure(encoding='utf-8')

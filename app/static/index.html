@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,22 +8,25 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- CSS Stylesheet -->
     <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
 
-    <!-- Header Navigation -->
+    <!-- Cabecalho do site -->
     <header class="main-header">
         <div class="header-container">
             <a href="#" class="logo">
                 <span class="logo-icon"><i class="fa-solid fa-bolt"></i></span>
                 TechVibe
             </a>
-            
+
             <div class="search-bar">
                 <input type="text" placeholder="Buscar produtos, marcas e muito mais...">
                 <button><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -43,7 +47,8 @@
         <div class="hero-content">
             <span class="tagline">Novidades da Semana</span>
             <h1>A Revolução do Som e da Performance</h1>
-            <p>Descubra periféricos premium que elevam seu gameplay e produtividade ao próximo nível. Design minimalista com engenharia acústica sem precedentes.</p>
+            <p>Descubra periféricos premium que elevam seu gameplay e produtividade ao próximo nível. Design minimalista
+                com engenharia acústica sem precedentes.</p>
             <a href="#catalog" class="cta-btn">Explorar Ofertas <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="hero-visual">
@@ -58,13 +63,13 @@
             <h2>Produtos em Destaque</h2>
             <p>Garanta frete grátis em todo o Brasil para compras acima de R$ 250,00.</p>
         </div>
-        
+
         <div class="product-grid" id="product-grid">
             <!-- Dynamically loaded products go here -->
         </div>
     </main>
 
-    <!-- Cart Drawer (Slide-out from Right) -->
+    <!-- Cart Drawer -->
     <div id="cart-drawer" class="cart-drawer">
         <div class="cart-header">
             <h3>Seu Carrinho</h3>
@@ -105,7 +110,8 @@
                         <p>Código do Pedido: <strong id="success-order-id">PED-123456</strong></p>
                         <p>Status: <span class="status-badge">Preparando envio</span></p>
                     </div>
-                    <p class="instruction-text">Você pode rastrear a entrega ou tirar dúvidas enviando uma mensagem no nosso chat de suporte ao lado.</p>
+                    <p class="instruction-text">Você pode rastrear a entrega ou tirar dúvidas enviando uma mensagem no
+                        nosso chat de suporte ao lado.</p>
                     <button id="modal-close-btn" class="modal-action-btn">Voltar às Compras</button>
                 </div>
             </div>
@@ -163,4 +169,5 @@
     <!-- JS Logic -->
     <script src="/static/app.js"></script>
 </body>
+
 </html>

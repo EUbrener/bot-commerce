@@ -14,7 +14,7 @@ from app import config
 from app.data.intent_data import INTENCOES_TEXTOS, INTENCOES_LABELS
 from app.data.faq_data import FAQ_PERGUNTAS
 
-# Ensure NLTK packages are downloaded
+# Baixa pacotes NLTK
 nltk.download('punkt', quiet=True)
 nltk.download('punkt_tab', quiet=True)
 

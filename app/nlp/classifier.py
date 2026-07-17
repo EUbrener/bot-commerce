@@ -2,12 +2,12 @@ import joblib
 from typing import Tuple, Optional
 from app import config
 
-# Global variables to store the loaded models
+# Variáveis globais para armazenar os modelos carregados
 _classificador = None
 _vetorizador = None
 
 def load_classifier():
-    """Loads the classifier and vectorizer models if they are not already loaded."""
+    """Carrega os modelos de classificador e vetorizador, caso ainda não estejam carregados."""
     global _classificador, _vetorizador
     if _classificador is None or _vetorizador is None:
         if config.CLASSIFIER_INTENT_PATH.exists() and config.VECTORIZER_INTENT_PATH.exists():
@@ -15,7 +15,7 @@ def load_classifier():
             _vetorizador = joblib.load(config.VECTORIZER_INTENT_PATH)
         else:
             raise FileNotFoundError(
-                "Model files not found. Please run 'python train.py' to train and persist models."
+                "Modelos não encontrados. Por favor, execute 'python train.py' para treinar e persistir os modelos."
             )
     return _classificador, _vetorizador
 

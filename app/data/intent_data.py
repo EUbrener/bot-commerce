@@ -42,7 +42,6 @@ DEVOLUCAO_TEXTOS = [
     "como solicitar troca", "como solicitar devolucao", "procedimento de devolucao",
     "onde solicito devolucao", "como devolver a encomenda", "quero devolver e receber estorno",
     "desistir da compra", "arrependimento de compra",
-    # Novas frases para melhor reconhecimento de devolução ou reembolso
     "devolucao ou reembolso",
     "devolução ou reembolso",
     "como funciona a devolução ou reembolso",
@@ -84,7 +83,6 @@ PAGAMENTO_TEXTOS = [
     "cartao recusado", "pagamento recusado", "erro no pagamento",
     "nao consegui pagar", "como confirmar pagamento", "pagamento nao aprovado",
     "como emitir segunda via", "segunda via do boleto",
-    # Novas frases para melhor reconhecimento de formas de pagamento
     "quais são as formas de pagamento",
     "quais formas de pagamento você aceita",
     "quais as formas de pagamento",
