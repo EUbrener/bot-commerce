@@ -1,14 +1,23 @@
 apiVersion: backstage.io/v1alpha1
 kind: System
-
 metadata:
-  name: bot-commerce
-  description: Aplicação que testa um modelo de Inteligência Artificial como agente RAG, para suporte em tempo real em um site de e-commerce.
-
+  name: bot-commerce-system
+  title: Bot Commerce System
+  description: Sistema completo de E-Commerce com suporte inteligente via Chatbot RAG e análise estatística.
   annotations:
     backstage.io/source-location: url:https://github.com/EUbrener/bot-commerce/
-
 spec:
-  type: service
-  lifecycle: development
   owner: user:default/brener
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: bot-commerce-components
+  description: Importação de todos os componentes e APIs vinculados ao sistema bot-commerce no catálogo Backstage.
+spec:
+  targets:
+    - ./catalog-info-api.yaml
+    - ./catalog-info-backend.yaml
+    - ./catalog-info-nlp.yaml
+    - ./frontend/catalog-info.yaml

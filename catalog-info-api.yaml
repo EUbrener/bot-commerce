@@ -1,0 +1,203 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: bot-commerce-api
+  title: Bot Commerce Chatbot & Support API
+  description: Especificação REST OpenAPI para a API de atendimento automático do E-commerce utilizando FastAPI e NLP.
+  tags:
+    - python
+    - fastapi
+    - rest
+    - openapi
+    - chatbot
+    - ai
+  annotations:
+    backstage.io/source-location: url:https://github.com/EUbrener/bot-commerce/
+spec:
+  type: openapi
+  lifecycle: development
+  owner: user:default/brener
+  system: bot-commerce-system
+  definition: |
+    openapi: 3.0.2
+    info:
+      title: Chatbot E-commerce API
+      description: API de atendimento automático para e-commerce usando Processamento de Linguagem Natural.
+      version: 1.0.0
+    paths:
+      /chat:
+        post:
+          summary: Envia uma mensagem ao chatbot
+          description: Processa a mensagem enviada pelo usuário utilizando o pipeline central de NLP.
+          operationId: chat_endpoint_chat_post
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ChatMessageInput'
+          responses:
+            '200':
+              description: Resposta processada com intenções e entidades extraídas.
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/ChatResponse'
+            '503':
+              description: Serviço indisponível (modelos de ML não carregados).
+            '500':
+              description: Erro interno no processamento.
+      /analytics:
+        get:
+          summary: Retorna métricas de analytics do chatbot
+          description: Retorna estatísticas detalhadas sobre o uso do chatbot (intenções, sentimentos, FAQ e entidades).
+          operationId: analytics_endpoint_analytics_get
+          responses:
+            '200':
+              description: Métricas agregadas de atendimento.
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/AnalyticsResult'
+      /health:
+        get:
+          summary: Verifica a integridade da API e se os modelos estão carregados
+          description: Endpoint para monitorar se a API está online e se os arquivos de ML foram carregados.
+          operationId: health_endpoint_health_get
+          responses:
+            '200':
+              description: Status de saúde da aplicação.
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        example: healthy
+                      models_loaded:
+                        type: boolean
+                        example: true
+    components:
+      schemas:
+        ChatMessageInput:
+          type: object
+          required:
+            - mensagem
+          properties:
+            mensagem:
+              type: string
+              description: A mensagem enviada pelo usuário
+              example: Como posso rastrear meu pedido?
+            historico:
+              type: array
+              nullable: true
+              items:
+                type: array
+                items:
+                  type: string
+              description: Histórico de conversas anteriores
+        SentimentResult:
+          type: object
+          required:
+            - sentimento
+            - confianca
+            - estrelas
+          properties:
+            sentimento:
+              type: string
+              example: neutro
+            confianca:
+              type: number
+              example: 0.76
+            estrelas:
+              type: integer
+              example: 3
+        EntityDetail:
+          type: object
+          properties:
+            valores:
+              type: array
+              items:
+                type: string
+            validos:
+              type: array
+              items:
+                type: string
+        EntitiesResult:
+          type: object
+          required:
+            - pedidos
+            - datas
+            - valores
+            - emails
+            - telefones
+          properties:
+            pedidos:
+              $ref: '#/components/schemas/EntityDetail'
+            datas:
+              $ref: '#/components/schemas/EntityDetail'
+            valores:
+              $ref: '#/components/schemas/EntityDetail'
+            emails:
+              $ref: '#/components/schemas/EntityDetail'
+            telefones:
+              $ref: '#/components/schemas/EntityDetail'
+        ChatResponse:
+          type: object
+          required:
+            - resposta
+            - intencao
+            - confianca
+            - entidades
+            - requer_humano
+            - sentimento
+          properties:
+            resposta:
+              type: string
+            intencao:
+              type: string
+            confianca:
+              type: number
+            entidades:
+              $ref: '#/components/schemas/EntitiesResult'
+            requer_humano:
+              type: boolean
+            nivel_busca:
+              type: string
+              nullable: true
+            sentimento:
+              $ref: '#/components/schemas/SentimentResult'
+        AnalyticsResult:
+          type: object
+          required:
+            - total_mensagens
+            - escalacoes_humano
+            - confianca_media
+            - intencoes
+            - sentimentos
+            - faq_matches
+            - entidades_extraidas
+          properties:
+            total_mensagens:
+              type: integer
+            escalacoes_humano:
+              type: integer
+            confianca_media:
+              type: number
+            intencoes:
+              type: object
+              additionalProperties:
+                type: integer
+            sentimentos:
+              type: object
+              additionalProperties:
+                type: integer
+            faq_matches:
+              type: object
+              additionalProperties:
+                type: integer
+            entidades_extraidas:
+              type: object
+              additionalProperties:
+                type: integer

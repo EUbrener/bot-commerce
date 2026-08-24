@@ -1,0 +1,22 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bot-commerce-frontend
+  title: Bot Commerce Frontend Web Application
+  description: Interface web em React, Vite, TypeScript e TanStack Router para navegação no e-commerce e interação com o chatbot.
+  tags:
+    - typescript
+    - react
+    - vite
+    - tanstack
+    - tailwindcss
+    - frontend
+  annotations:
+    backstage.io/source-location: url:https://github.com/EUbrener/bot-commerce/tree/main/frontend
+spec:
+  type: website
+  lifecycle: development
+  owner: user:default/brener
+  system: bot-commerce-system
+  consumesApis:
+    - bot-commerce-api
