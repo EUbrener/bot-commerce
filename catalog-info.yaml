@@ -59,19 +59,4 @@ spec:
   lifecycle: experimental
   owner: user:Brenolla
   system: bot-commerce
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: bot-commerce-worker
-  title: bot-commerce-worker
-  description: Componente bot-commerce-worker (library)
-  tags:
-  - node
-  annotations:
-    github.com/project-slug: EUbrener/bot-commerce
-spec:
-  type: library
-  lifecycle: experimental
-  owner: user:Brenolla
-  system: bot-commerce
+
