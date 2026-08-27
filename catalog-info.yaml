@@ -1,0 +1,45 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: bot-commerce
+  title: bot-commerce
+  description: Sistema bot-commerce analisado automaticamente
+  annotations:
+    github.com/project-slug: EUbrener/bot-commerce
+spec:
+  owner: EUBrener
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bot-commerce
+  title: bot-commerce
+  description: Componente bot-commerce (service)
+  tags:
+  - python
+  - fastapi
+  annotations:
+    github.com/project-slug: EUbrener/bot-commerce
+spec:
+  type: service
+  lifecycle: experimental
+  owner: EUBrener
+  system: bot-commerce
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bot-commerce-frontend
+  title: bot-commerce-frontend
+  description: Componente bot-commerce-frontend (website)
+  tags:
+  - node
+  - react
+  - vite
+  annotations:
+    github.com/project-slug: EUbrener/bot-commerce
+spec:
+  type: website
+  lifecycle: experimental
+  owner: EUBrener
+  system: bot-commerce
