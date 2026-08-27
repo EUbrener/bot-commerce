@@ -1,0 +1,80 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: bot-commerce
+  title: "bot-commerce"
+  description: "Sistema bot-commerce analisado automaticamente"
+  annotations:
+    github.com/project-slug: "EUbrener/bot-commerce"
+spec:
+  owner: user:default/guest
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: bot-auxiliar
+  title: "bot-auxiliar"
+  description: "API bot-auxiliar (openapi)"
+  annotations:
+    github.com/project-slug: "EUbrener/bot-commerce"
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: user:default/guest
+  system: bot-commerce
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: bot-auxiliar
+      version: 1.0.0
+    paths: {}
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: postgres
+  title: "Postgres"
+  description: "Recurso Postgres (database)"
+  tags:
+    - database
+  annotations:
+    github.com/project-slug: "EUbrener/bot-commerce"
+spec:
+  type: database
+  lifecycle: experimental
+  owner: user:default/guest
+  system: bot-commerce
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bot-commerce-frontend
+  title: "bot-commerce-frontend"
+  description: "Componente bot-commerce-frontend (website)"
+  tags:
+    - react
+    - vite
+  annotations:
+    github.com/project-slug: "EUbrener/bot-commerce"
+spec:
+  type: website
+  lifecycle: experimental
+  owner: user:default/guest
+  system: bot-commerce
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bot-commerce-backend
+  title: "bot-commerce-backend"
+  description: "Componente bot-commerce-backend (service)"
+  tags:
+    - python
+    - fastapi
+  annotations:
+    github.com/project-slug: "EUbrener/bot-commerce"
+spec:
+  type: service
+  lifecycle: experimental
+  owner: user:default/guest
+  system: bot-commerce
