@@ -2,45 +2,87 @@ apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
   name: bot-commerce
-  title: bot-commerce
-  description: Sistema bot-commerce analisado automaticamente
+  title: "bot-commerce"
+  description: "Sistema bot-commerce analisado automaticamente"
   annotations:
-    github.com/project-slug: EUbrener/bot-commerce
+    github.com/project-slug: "EUbrener/bot-commerce"
 spec:
-  owner: EUBrener
+  owner: user:default/guest
 ---
 apiVersion: backstage.io/v1alpha1
-kind: Component
+kind: API
 metadata:
-  name: bot-commerce
-  title: bot-commerce
-  description: Componente bot-commerce (service)
-  tags:
-  - python
-  - fastapi
+  name: chat-bot
+  title: "chat-bot"
+  description: "API chat-bot (openapi)"
   annotations:
-    github.com/project-slug: EUbrener/bot-commerce
-    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: "EUbrener/bot-commerce"
 spec:
-  type: service
+  type: openapi
   lifecycle: experimental
-  owner: EUBrener
+  owner: user:default/guest
+  system: bot-commerce
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: chat-bot
+      version: 1.0.0
+    paths: {}
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: data-mock
+  title: "data-mock"
+  description: "Recurso data-mock (database)"
+  tags:
+    - python
+  annotations:
+    github.com/project-slug: "EUbrener/bot-commerce"
+spec:
+  type: database
+  lifecycle: experimental
+  owner: user:default/guest
   system: bot-commerce
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: bot-commerce-frontend
-  title: bot-commerce-frontend
-  description: Componente bot-commerce-frontend (website)
+  name: frontend
+  title: "frontend"
+  description: "Componente frontend (website)"
   tags:
-  - node
-  - react
-  - vite
+    - react
+    - vite
   annotations:
-    github.com/project-slug: EUbrener/bot-commerce
+    github.com/project-slug: "EUbrener/bot-commerce"
+    backstage.io/techdocs-ref: "dir:."
 spec:
   type: website
   lifecycle: experimental
-  owner: EUBrener
+  owner: user:default/guest
   system: bot-commerce
+  dependsOn:
+    - component:default/backend
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: backend
+  title: "backend"
+  description: "Componente backend (service)"
+  tags:
+    - python
+    - fastapi
+  annotations:
+    github.com/project-slug: "EUbrener/bot-commerce"
+    backstage.io/techdocs-ref: "dir:."
+spec:
+  type: service
+  lifecycle: experimental
+  owner: user:default/guest
+  system: bot-commerce
+  providesApis:
+    - chat-bot
+  dependsOn:
+    - resource:default/data-mock
