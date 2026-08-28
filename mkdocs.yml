@@ -1,0 +1,11 @@
+site_name: TechVibe E-Commerce & Chatbot Support
+site_description: Documentação técnica da aplicação de E-Commerce e Chatbot Inteligente
+
+nav:
+  - Início: index.md
+  - Arquitetura: architecture.md
+  - API: api.md
+  - Setup: setup.md
+
+plugins:
+  - techdocs-core
