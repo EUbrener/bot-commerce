@@ -32,9 +32,9 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
-  name: data-mock
-  title: "data-mock"
-  description: "Recurso data-mock (database)"
+  name: database-mock
+  title: "database-mock"
+  description: "Recurso database-mock (database)"
   tags:
     - python
   annotations:
@@ -62,8 +62,6 @@ spec:
   lifecycle: experimental
   owner: user:default/guest
   system: bot-commerce
-  dependsOn:
-    - component:default/backend
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -85,4 +83,4 @@ spec:
   providesApis:
     - chat-bot
   dependsOn:
-    - resource:default/data-mock
+    - resource:default/database-mock
