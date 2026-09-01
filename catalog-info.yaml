@@ -18,7 +18,6 @@ metadata:
   description: "API chat-bot (openapi)"
   annotations:
     github.com/project-slug: "EUbrener/bot-commerce"
-    backstage.io/techdocs-ref: value
 spec:
   type: openapi
   lifecycle: experimental
