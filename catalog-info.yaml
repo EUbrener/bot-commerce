@@ -5,6 +5,7 @@ metadata:
   title: "bot-commerce"
   description: "Sistema bot-commerce analisado automaticamente"
   annotations:
+    backstage.io/techdocs-ref: dir:. 
     github.com/project-slug: "EUbrener/bot-commerce"
 spec:
   owner: user:default/guest
@@ -16,6 +17,7 @@ metadata:
   title: "chat-bot"
   description: "API chat-bot (openapi)"
   annotations:
+    backstage.io/techdocs-ref: dir:. 
     github.com/project-slug: "EUbrener/bot-commerce"
 spec:
   type: openapi
@@ -38,6 +40,7 @@ metadata:
   tags:
     - python
   annotations:
+    backstage.io/techdocs-ref: dir:. 
     github.com/project-slug: "EUbrener/bot-commerce"
 spec:
   type: database
