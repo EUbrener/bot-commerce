@@ -233,7 +233,6 @@ metadata:
     - vite
   annotations:
     github.com/project-slug: "EUbrener/bot-commerce"
-    github.com/project-slug: facebook/react
 spec:
   type: website
   lifecycle: experimental
@@ -251,7 +250,6 @@ metadata:
     - fastapi
   annotations:
     github.com/project-slug: "EUbrener/bot-commerce"
-    github.com/project-slug: facebook/react
 spec:
   type: service
   lifecycle: experimental
