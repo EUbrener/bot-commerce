@@ -5,17 +5,17 @@ metadata:
   title: "bot-commerce"
   description: "Sistema bot-commerce analisado automaticamente"
   annotations:
-    backstage.io/techdocs-ref: dir:. 
     github.com/project-slug: "EUbrener/bot-commerce"
+    backstage.io/techdocs-ref: "dir:."
 spec:
   owner: user:EUbrener
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: chat-bot
-  title: "chat-bot"
-  description: "API chat-bot (openapi)"
+  name: bot-commerce-api
+  title: "bot-commerce-api"
+  description: "API bot-commerce-api (openapi)"
   annotations:
     github.com/project-slug: "EUbrener/bot-commerce"
 spec:
@@ -26,213 +26,63 @@ spec:
   definition: |
     openapi: 3.0.0
     info:
-      title: chat-bot
+      title: bot-commerce-api
       version: 1.0.0
-    paths: 
+    paths:
+      /:
+        get:
+          summary: get index
+          responses:
+            '200':
+              description: Operação realizada com sucesso.
       /chat:
         post:
-          summary: Envia uma mensagem ao chatbot
-          description: Processa a mensagem enviada pelo usuário utilizando o pipeline central de NLP.
-          operationId: chat_endpoint_chat_post
-          requestBody:
-            required: true
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/ChatMessageInput'
+          summary: chat endpoint
           responses:
             '200':
-              description: Resposta processada com intenções e entidades extraídas.
-              content:
-                application/json:
-                  schema:
-                    $ref: '#/components/schemas/ChatResponse'
-            '503':
-              description: Serviço indisponível (modelos de ML não carregados).
-            '500':
-              description: Erro interno no processamento.
+              description: Operação realizada com sucesso.
       /analytics:
         get:
-          summary: Retorna métricas de analytics do chatbot
-          description: Retorna estatísticas detalhadas sobre o uso do chatbot (intenções, sentimentos, FAQ e entidades).
-          operationId: analytics_endpoint_analytics_get
+          summary: analytics endpoint
           responses:
             '200':
-              description: Métricas agregadas de atendimento.
-              content:
-                application/json:
-                  schema:
-                    $ref: '#/components/schemas/AnalyticsResult'
+              description: Operação realizada com sucesso.
       /health:
         get:
-          summary: Verifica a integridade da API e se os modelos estão carregados
-          description: Endpoint para monitorar se a API está online e se os arquivos de ML foram carregados.
-          operationId: health_endpoint_health_get
+          summary: health endpoint
           responses:
             '200':
-              description: Status de saúde da aplicação.
-              content:
-                application/json:
-                  schema:
-                    type: object
-                    properties:
-                      status:
-                        type: string
-                        example: healthy
-                      models_loaded:
-                        type: boolean
-                        example: true
-    components:
-      schemas:
-        ChatMessageInput:
-          type: object
-          required:
-            - mensagem
-          properties:
-            mensagem:
-              type: string
-              description: A mensagem enviada pelo usuário
-              example: Como posso rastrear meu pedido?
-            historico:
-              type: array
-              nullable: true
-              items:
-                type: array
-                items:
-                  type: string
-              description: Histórico de conversas anteriores
-        SentimentResult:
-          type: object
-          required:
-            - sentimento
-            - confianca
-            - estrelas
-          properties:
-            sentimento:
-              type: string
-              example: neutro
-            confianca:
-              type: number
-              example: 0.76
-            estrelas:
-              type: integer
-              example: 3
-        EntityDetail:
-          type: object
-          properties:
-            valores:
-              type: array
-              items:
-                type: string
-            validos:
-              type: array
-              items:
-                type: string
-        EntitiesResult:
-          type: object
-          required:
-            - pedidos
-            - datas
-            - valores
-            - emails
-            - telefones
-          properties:
-            pedidos:
-              $ref: '#/components/schemas/EntityDetail'
-            datas:
-              $ref: '#/components/schemas/EntityDetail'
-            valores:
-              $ref: '#/components/schemas/EntityDetail'
-            emails:
-              $ref: '#/components/schemas/EntityDetail'
-            telefones:
-              $ref: '#/components/schemas/EntityDetail'
-        ChatResponse:
-          type: object
-          required:
-            - resposta
-            - intencao
-            - confianca
-            - entidades
-            - requer_humano
-            - sentimento
-          properties:
-            resposta:
-              type: string
-            intencao:
-              type: string
-            confianca:
-              type: number
-            entidades:
-              $ref: '#/components/schemas/EntitiesResult'
-            requer_humano:
-              type: boolean
-            nivel_busca:
-              type: string
-              nullable: true
-            sentimento:
-              $ref: '#/components/schemas/SentimentResult'
-        AnalyticsResult:
-          type: object
-          required:
-            - total_mensagens
-            - escalacoes_humano
-            - confianca_media
-            - intencoes
-            - sentimentos
-            - faq_matches
-            - entidades_extraidas
-          properties:
-            total_mensagens:
-              type: integer
-            escalacoes_humano:
-              type: integer
-            confianca_media:
-              type: number
-            intencoes:
-              type: object
-              additionalProperties:
-                type: integer
-            sentimentos:
-              type: object
-              additionalProperties:
-                type: integer
-            faq_matches:
-              type: object
-              additionalProperties:
-                type: integer
-            entidades_extraidas:
-              type: object
-              additionalProperties:
-                type: integer
----
-apiVersion: backstage.io/v1alpha1
-kind: Resource
-metadata:
-  name: database-mock
-  title: "database-mock"
-  description: "Recurso database-mock (database)"
-  tags:
-    - python
-  annotations:
-    github.com/project-slug: "EUbrener/bot-commerce"
-spec:
-  type: database
-  lifecycle: experimental
-  owner: user:EUbrener
-  system: bot-commerce
+              description: Operação realizada com sucesso.
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: frontend
-  title: "frontend"
-  description: "Componente frontend (website)"
+  name: tanstack-start-ts
+  title: "tanstack_start_ts"
+  description: "Componente tanstack_start_ts (website)"
+  annotations:
+    github.com/project-slug: "EUbrener/bot-commerce"
+    backstage.io/techdocs-ref: "dir:."
+spec:
+  type: website
+  lifecycle: experimental
+  owner: user:EUbrener
+  system: bot-commerce
+  dependsOn:
+    - component:default/bot-commerce-backend
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tanstack-start-ts-frontend
+  title: "tanstack_start_ts-frontend"
+  description: "Componente tanstack_start_ts-frontend (website)"
   tags:
     - react
     - vite
   annotations:
     github.com/project-slug: "EUbrener/bot-commerce"
+    backstage.io/techdocs-ref: "dir:."
 spec:
   type: website
   lifecycle: experimental
@@ -242,20 +92,19 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: backend
-  title: "backend"
-  description: "Componente backend (service)"
+  name: bot-commerce-backend
+  title: "bot-commerce-backend"
+  description: "Componente bot-commerce-backend (service)"
   tags:
     - python
     - fastapi
   annotations:
     github.com/project-slug: "EUbrener/bot-commerce"
+    backstage.io/techdocs-ref: "dir:."
 spec:
   type: service
   lifecycle: experimental
   owner: user:EUbrener
   system: bot-commerce
   providesApis:
-    - chat-bot
-  dependsOn:
-    - resource:default/database-mock
+    - bot-commerce-api
